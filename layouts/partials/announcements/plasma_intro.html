@@ -1,0 +1,79 @@
+{{/*
+SPDX-FileCopyrightText: 2021 Nguyen Hung Phu <phuhnguyen@disroot.org>
+SPDX-License-Identifier: LGPL-3.0-or-later
+*/}}
+
+{{- $version := .File.TranslationBaseName }}
+{{- if eq (strings.Count "." $version) 2 }}
+
+{{- $major := index (split $version ".") 0 | int }}
+{{- $minor := index (split $version ".") 1 | int }}
+{{- $patch := index (split $version ".") 2 | int }}
+{{- $majMin := "" }}
+{{- if lt $patch 50 }}
+{{- $majMin = print $major "." $minor }}
+{{- else }}
+{{- $majMin = print $major "." (add $minor 1) }}
+{{- end }}
+{{- $scratch := newScratch }}
+{{- $scratch.Set "maj_min" $majMin }}
+
+{{- with .Params.youtube }}
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe src="https://www.youtube.com/embed/{{ . }}" class="embed-responsive-item" allowfullscreen title="YouTube Video"></iframe>
+</div>
+{{- end }}
+
+{{- with .Params.video }}
+<div class="laptop-with-overlay d-block my-3 mx-auto" style="max-width: 800px">
+  <img class="laptop img-fluid mt-3" src="/reusable-assets/laptop.svg" alt="empty laptop with an overlay">
+  <div class="laptop-overlay">
+    <video controls class="w-100 h-100 mt-3" poster="https://cdn.kde.org/promo/Announcements/Plasma/{{ $majMin }}/Thumbnail.png">
+      <source src="https://cdn.kde.org/promo/Announcements/Plasma/{{ $majMin }}/Video.webm" type="video/webm">
+      <source src="https://cdn.kde.org/promo/Announcements/Plasma/{{ $majMin }}/Video.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+{{- end }}
+
+{{- with .Params.peertube }}
+<figure class="videoBlock">
+  <iframe src="https://peertube.mastodon.host/videos/embed/{{ . }}?rel=0" width="560" height="315" allowfullscreen='true'></iframe>
+</figure>
+{{- end }}
+
+{{- with .Params.figure }}
+{{- $altMsgName := "" }}
+{{- $capMsgName := "" }}
+{{- if lt $patch 50 }}
+{{- $altMsgName = "annc-plasma-alt" }}
+{{- $capMsgName = "annc-plasma-caption" }}
+{{- else }}
+{{- $altMsgName = "annc-plasma-beta-alt" }}
+{{- $capMsgName = "annc-plasma-beta-caption" }}
+{{- end }}
+<figure class="{{ .class | default "text-center" }}">
+  <img src="{{ .src }}" alt="{{ .alt | default (i18n $altMsgName $scratch) }}" width="600px" />
+  <figcaption>
+    <p>{{- .caption | default (i18n $capMsgName $scratch) | markdownify }}</p>
+  </figcaption>
+</figure>
+{{- end }}
+
+{{- if .Params.asBugfix }}
+{{- $firstMinor := .Sites.First.GetPage (printf "/announcements/plasma/%d/%d.%d.0.md" $major $major $minor) }}
+{{- $minorY := print $firstMinor.Params.date.Year " " }}
+{{- $minorM := $firstMinor.Params.date.Month }}
+
+{{- $scratch.Set "maj" $major }}
+{{- $scratch.Set "version" $version }}
+{{- $scratch.Set "year" $minorY }}
+{{- $minorReleaseMsgName := printf "annc-plasma-bugfix-minor-release-%d" $minorM }}
+{{- $worthMsgName := printf "annc-plasma-bugfix-worth-%d" $patch }}
+
+<p>{{ partial "i18n_date.html" . }}. {{ i18n "annc-plasma-bugfix-intro" $scratch }}</p>
+<p>{{ i18n $minorReleaseMsgName $scratch | markdownify }}</p>
+<p>{{ i18n $worthMsgName }} {{ i18n "annc-plasma-bugfix-last" }}</p>
+{{- end }}
+
+{{- end }}

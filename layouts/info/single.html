@@ -1,0 +1,11 @@
+{{ define "main" }}
+<div class="container" role="main">
+  <h1>{{ .Title }}</h1>
+
+  {{ .Content }}
+
+  {{ if .Params.version }}
+  {{ readFile (printf "%s%s%s%s" .File.Dir "sources/source-" .File.TranslationBaseName ".html") }}
+  {{ end }}
+</div>
+{{ end }}

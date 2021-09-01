@@ -1,0 +1,21 @@
+{{- if not .Params.customOutro }}
+<section class="container">
+  <div class="row" id="download">
+    {{ partialCached "announcements/plasma_download.html" . }}
+    <article class="col-md">
+      {{ partialCached "announcements/plasma_source_download.html" . }}
+      {{ if not .Params.noinfo }}
+      <a href="/info/plasma-{{ .File.TranslationBaseName }}" class="learn-more">{{ i18n "source-info-page" }}</a>
+      {{ end }}
+    </article>
+  </div>
+</section>
+
+{{ partialCached "announcements/plasma_feedback.html" . }}
+{{- end }}
+
+{{ partialCached "announcements/support_kde.html" . }}
+
+{{ partialCached "announcements/about_kde.html" . }}
+
+{{ partialCached "announcements/press_contacts.html" . }}

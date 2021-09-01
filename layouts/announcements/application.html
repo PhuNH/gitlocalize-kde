@@ -1,0 +1,28 @@
+{{ define "main" }}
+<main class="container">
+  {{ partial "breadcrumb.html" . }}
+
+  <h1>{{ .Title | safeHTML }}</h1>
+
+  {{ .Content }}
+
+  {{ if .Params.changelog }}
+  {{ i18n "full-changelog" .Params | markdownify }}
+  {{ end }}
+
+  {{ if not .Params.custom_spread_install }}
+  {{ partialCached "announcements/applications_spread_install.html" . }}
+  {{ end }}
+
+  {{ if .Params.version }}
+  <h2>{{ i18n "compile-app" }}</h2>
+  <p>{{ i18n "compile-app-desc" .Params | markdownify }}</h2>
+  {{ end }}
+
+  {{ partialCached "announcements/support_kde.html" . }}
+
+  {{ partialCached "announcements/about_kde.html" . }}
+
+  {{ partialCached "announcements/press_contacts.html" . }}
+</main>
+{{ end }}

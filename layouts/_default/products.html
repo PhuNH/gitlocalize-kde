@@ -1,0 +1,35 @@
+{{ define "main" }}
+<main>
+  <section style="background: url(/announcements/plasma/5/5.22.0/volma.webp); background-size:cover; color: white" class="mt-0">
+    <div class="container py-5 mt-0 text-center">
+      <h1 class="text-white">{{ i18n "plasma" }}</h1>
+      <h2 class="text-white">{{ i18n "plasma-desc" }}</h2>
+      <div class="laptop-with-overlay mt-5 mb-3 w-75 ml-auto mr-auto">
+        <img class="laptop img-fluid" src="/reusable-assets/laptop.svg" alt="">
+        <div class="laptop-overlay">
+          <img class="img-fluid" src="/announcements/plasma/5/5.21.0/plasma-dark.webp" alt="{{ .Params.plasma.screenshot }}" />
+        </div>
+      </div>
+      <p style="max-width: 600px;" class="ml-auto mr-auto text-center h5 my-3">
+        {{ .Params.plasma.text }}
+      </p>
+      <p style="max-width: 800px" class="ml-auto mr-auto d-flex flex-wrap justify-content-center">
+        <a href="{{"/plasma-desktop" | relLangURL}}" hreflang="{{ .Site.LanguagePrefix }}" class="learn-more button mb-2 ml-1 mr-1">{{ .Params.plasma.learn_more }}</a>
+        <a href="/distributions" class="learn-more button mb-2 ml-1 mr-1">{{ .Params.plasma.view }}</a>
+      </p>
+    </div>
+  </section>
+  <div class="container-fluid">
+    <section class="grid" id="productsRow">
+      {{ $languagePrefix := .Site.LanguagePrefix }} 
+      {{ range .Params.products }}
+        <article class="text-center {{ with .color }}bg-{{ . }}{{ end }} p-4">
+            <h2><a href="{{ .link }}{{ if .externi18n }}{{ $languagePrefix }}{{ end }}">{{ .title }}</a></h2>
+          <h3 class="mb-3 h5 mx-auto" style="max-width:400px">{{ .description | markdownify }}</h3>
+          <a href="{{ .link }}"><img src="{{ .image }}" class="w-100 my-4" style="max-width: 140px;" /></a>
+        </article>
+      {{ end }}
+    </section>
+  </div>
+</main>
+{{ end }}

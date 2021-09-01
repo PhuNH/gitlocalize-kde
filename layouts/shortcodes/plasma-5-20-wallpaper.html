@@ -1,0 +1,10 @@
+<div class="text-center" style="background: radial-gradient(circle, #6e5cee 0%, #4618ac 80%); color: white;">
+  <div class="p-4 container">
+    <h2 class="h1">{{ .Get "title" }}</h2>
+    <p class="h5 mx-auto" style="max-width: 600px">{{ .Get "description" | safeHTML }}</p>
+  </div>
+  <picture>
+    <source srcset="/announcements/plasma/5/5.20.0/background-look-and-feel-dark.png" media="(prefers-color-scheme: dark)">
+    <img src="/announcements/plasma/5/5.20.0/background-look-and-feel.png" class="w-100" alt="{{ .Get "alt" }}">
+  </picture>
+</div>

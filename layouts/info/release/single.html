@@ -1,0 +1,43 @@
+{{ define "main" }}
+<div class="container" role="main">
+  <h1>{{ .Title }}</h1>
+
+  {{ if .Params.announcement }}
+  <p>
+  For new features, bugfixes and changes read the <a href="{{ .Params.announcement }}">{{ .Params.version }} releases announcement</a>.
+  </p>
+  {{ end }}
+
+  {{ if .Params.bugs }}
+    <h2><a name="bugs">Bugs</a></h2>
+
+    <p>This is a list of grave bugs and common pitfalls surfacing after the release was packaged:</p>
+
+    <ul>
+      {{ range .Params.bugs }}
+        {{ . }}
+      {{ end }}
+    </ul>
+  {{ end }}
+
+  <h2>Download and Compilation</h2>
+
+  <p>
+   <a href="https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source">Build instructions</a>
+   are available on our Community wiki.
+  </p>
+
+  <h2><a name="source">Source Code</a></h2>
+  <p>
+  The complete source code for {{ .Params.version }} releases is available for download:
+  </p>
+
+  {{ if .Params.signer }}
+    <p>
+      The tarballs have been signed by {{ .Params.signer }} <a href="http://pgp.mit.edu/pks/lookup?op=get&amp;search=0x{{ .Params.signing_fingerprint }}">{{ .Params.signing_fingerprint }}</a>.
+    </p>
+  {{ end }}
+
+  {{ readFile (printf "%s%s%s%s" .File.Dir "sources/source-releases-" .Params.version ".html") | safeHTML }}
+</div>
+{{ end }}

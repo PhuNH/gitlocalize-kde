@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="container mb-4" role="main">
+  <h1>{{ .Title }}</h1>
+
+  {{ range (.Paginate ( where .RegularPagesRecursive "Params.hidden" "ne" "true") 10).Pages }}
+    <div class="mb-4">
+      <div class="text-lighter">{{ partial "i18n_date.html" . }}</div>
+      <h3 class="mt-1 h4">{{ partial "fn/i18n_title" . }}</h3>
+      <div class="post-entry mt-3">
+        {{ partial "fn/i18n_description" . }}
+        {{ if .Truncated }}
+          <a href="{{ .Permalink }}" class="d-block mt-2">{{i18n "read-more" }}</a>
+        {{ end }}
+      </div>
+    </div>
+  {{ end }}
+
+  {{ template "_internal/pagination.html" . }}
+</div>
+{{ end }}

@@ -1,0 +1,32 @@
+{{ define "main" }}
+<main class="container" role="main">
+    <h1>Thank You</h1>
+    <h2>Thanks!</h2>
+    <p> The work of the KDE Community is made possible thanks to contributions from
+        KDE Community members, donors and corporations that collaborate with us.
+        We want to thank those organizations that make significant donations
+        of goods and services to KDE by publishing their names on this page.
+    </p>
+    <h2>Donations</h2>
+    <table class="thanks" width="100%">
+        <tr>
+            <th>Organisation</th>
+            <th>Description</th>
+            <th>Usage</th>
+            <th>Date</th>
+        </tr>
+        {{ with .Params.donations }}
+            {{ range sort . "startdate" "desc" }}
+        <tr>
+            <td>{{ .organization }}</td>
+            <td>{{ .description}}</tf>
+            <td>{{ .usage}}</td>
+            <td>{{ .startdate}}</td>
+        </tr>
+            {{end}}
+        {{end}}
+    </table>
+    <br><br>
+    <em>This page is made based on the policy as described in the <a href="http://ev.kde.org/rules/thankyou_policy.php">Thank You Policy</a>.</em>
+</main>
+{{ end }}

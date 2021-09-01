@@ -1,0 +1,316 @@
+baseURL: https://kde.org/
+canonifyURLs: true
+defaultContentLanguage: en
+enableGitInfo: true
+enableRobotsTXT: true
+i18n:
+  content:
+    frameworks_announcements:
+      files:
+      - content/announcements/frameworks/5/5.0.md
+      - content/announcements/frameworks/5/5.1.md
+      globs:
+      - content/announcements/frameworks/5/5.[2-9].0.md
+      - content/announcements/frameworks/5/5.[1-7][0-9].0.md
+    promo:
+      files:
+      - content/announcements/_index.md
+      - content/community/donations/_index.md
+      - content/distributions.md
+      - content/for/kids.md
+      - content/hardware.md
+      - content/plasma-desktop.md
+      - content/products.md
+      - content/stuff/_index.md
+    release_announcements:
+      globs:
+      - content/announcements/releases/*
+    www_www:
+      files:
+      - content/fundraisers/yearend2016/thanks_paypal.md
+      - content/fundraisers/yearend2014/thanks_paypal.md
+      - content/announcements/plasma/2-tp.md
+      globs:
+      - content/announcements/4/4.1[1-3].0/*
+      - content/announcements/4/4.11.*.md
+      - content/announcements/applications/*
+      - content/announcements/plasma/5/*
+      - content/announcements/gear/*.md
+  excludedKeys: changelog class color figure hero_image image images licenses link
+    logo major_version peertube release src url version version_text video youtube
+  genToOtherDir: true
+  langs: ast ca ca@valencia cs de es et eu fi fr gl hu it ko nl pl pt pt_BR ru sk sv
+    tr uk zh_CN
+  others:
+  - menu
+  - strings
+languages:
+  ast:
+    contentDir: content-trans/ast
+    languageCode: ast
+    languageName: Asturianu
+    menu:
+      main:
+      - name: Desendolcu
+        url: https://develop.kde.org
+        weight: 2
+      - name: Andechar
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  ca:
+    contentDir: content-trans/ca
+    languageCode: ca
+    languageName: Català
+    menu:
+      main:
+      - name: Desenvolupament
+        url: https://develop.kde.org
+        weight: 2
+      - name: Col·laboreu-hi
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  cs:
+    contentDir: content-trans/cs
+    languageCode: cs
+    languageName: Český
+    menu:
+      main:
+      - name: Develop
+        url: https://develop.kde.org
+        weight: 2
+      - name: Přidejte se
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  de:
+    contentDir: content-trans/de
+    languageCode: de
+    languageName: Deutsch
+    menu:
+      main:
+      - name: Entwicklung
+        url: https://develop.kde.org
+        weight: 2
+      - name: Machen Sie mit
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  en:
+    contentDir: content/
+    languageCode: en
+    languageName: English
+    menu:
+      main:
+      - name: Develop
+        url: https://develop.kde.org
+        weight: 2
+      - name: Get Involved
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 1
+  es:
+    contentDir: content-trans/es
+    languageCode: es
+    languageName: Español
+    menu:
+      main:
+      - name: Desarrollo
+        url: https://develop.kde.org
+        weight: 2
+      - name: Implicarse
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  eu:
+    contentDir: content-trans/eu
+    languageCode: eu
+    languageName: Euskara
+    menu:
+      main:
+      - name: Garapena
+        url: https://develop.kde.org
+        weight: 2
+      - name: Engaia zaitez
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  fr:
+    contentDir: content-trans/fr
+    languageCode: fr
+    languageName: Français
+    menu:
+      main:
+      - name: Développement
+        url: https://develop.kde.org
+        weight: 2
+      - name: Soyez impliqués
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  hu:
+    contentDir: content-trans/hu
+    languageCode: hu
+    languageName: Magyar
+    menu:
+      main:
+      - name: Fejlesztés
+        url: https://develop.kde.org
+        weight: 2
+      - name: Csatlakozás
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  it:
+    contentDir: content-trans/it
+    languageCode: it
+    languageName: Italiano
+    menu:
+      main:
+      - name: Sviluppo
+        url: https://develop.kde.org
+        weight: 2
+      - name: Partecipa
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  nl:
+    contentDir: content-trans/nl
+    languageCode: nl
+    languageName: Nederlands
+    menu:
+      main:
+      - name: Ontwikkelen
+        url: https://develop.kde.org
+        weight: 2
+      - name: Doe mee
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  pt-br:
+    contentDir: content-trans/pt-br
+    languageCode: pt-br
+    languageName: Português Brasileiro
+    menu:
+      main:
+      - name: Desenvolva
+        url: https://develop.kde.org
+        weight: 2
+      - name: Contribua
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  pt-pt:
+    contentDir: content-trans/pt-pt
+    languageCode: pt
+    languageName: Português
+    menu:
+      main:
+      - name: Desenvolvimento
+        url: https://develop.kde.org
+        weight: 2
+      - name: Envolva-se
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  ru:
+    contentDir: content-trans/ru
+    languageCode: ru
+    languageName: Русский
+    menu:
+      main:
+      - name: Разработка
+        url: https://develop.kde.org
+        weight: 2
+      - name: Как присоединиться
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  sk:
+    contentDir: content-trans/sk
+    languageCode: sk
+    languageName: Slovenčina
+    menu:
+      main:
+      - name: Vývoj
+        url: https://develop.kde.org
+        weight: 2
+      - name: Zapojiť sa
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  sv:
+    contentDir: content-trans/sv
+    languageCode: sv
+    languageName: Svenska
+    menu:
+      main:
+      - name: Utveckla
+        url: https://develop.kde.org
+        weight: 2
+      - name: Börja delta
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  tr:
+    contentDir: content-trans/tr
+    languageCode: tr
+    languageName: Türkçe
+    menu:
+      main:
+      - name: Geliştir
+        url: https://develop.kde.org
+        weight: 2
+      - name: Katıl
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  uk:
+    contentDir: content-trans/uk
+    languageCode: uk
+    languageName: Українська
+    menu:
+      main:
+      - name: Розробка
+        url: https://develop.kde.org
+        weight: 2
+      - name: Приєднатися до команди
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+  zh-cn:
+    contentDir: content-trans/zh-cn
+    languageCode: zh_CN
+    languageName: 简体中文
+    menu:
+      main:
+      - name: 开发
+        url: https://develop.kde.org
+        weight: 2
+      - name: 参与
+        url: https://community.kde.org/Get_Involved
+        weight: 3
+    weight: 2
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: tango
+module:
+  imports:
+  - path: invent.kde.org/websites/aether-sass
+outputs:
+  home:
+  - HTML
+  - RSS
+  section:
+  - HTML
+params:
+  images:
+  - /thumbnail.png
+  matomo: 1
+  repoName: kde-org
+rssLimit: 4
+summaryLength: 15

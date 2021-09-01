@@ -1,0 +1,22 @@
+{{ define "main" }}
+  <main class="container">
+    {{ partial "breadcrumb.html" . }}
+    {{ if not .Params.hide_title }}
+      <h1>{{ partial "fn/i18n_title" . }}</h1>
+      {{ if .Date }}
+      <p>{{ partial "i18n_date.html" . }}</p>
+      {{ end }}
+      <br>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ if not .Params.custom_about }}
+      {{ partialCached "announcements/about_kde.html" . }}
+    {{ end }}
+    {{ if not .Params.custom_contact }}
+      {{ partialCached "announcements/press_contacts.html" . }}
+    {{ end }}
+    {{ partial "copyright.html" . }}
+  </main>
+{{ end }}

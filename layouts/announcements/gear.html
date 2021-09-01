@@ -1,0 +1,25 @@
+{{ define "main" }}
+  {{ if .Params.hero_image }}
+  <figure  style="background-image: url({{ .Params.hero_image }});" class="hero-image w-100" alt="{{ partial "fn/i18n_title" . }}" ></figure>
+  {{ end }}
+  <main class="container">
+    {{ if not .Params.hide_title }}
+      <h1>{{ partial "fn/i18n_title" . }}</h1>
+      {{ if .Date }}
+      <p>{{ partial "i18n_date.html" . }}</p>
+      {{ end }}
+      <br>
+    {{ end }}
+
+    {{ .Content }}
+
+    {{ $scratch := newScratch }}
+    {{ $scratch.Set "version" .File.TranslationBaseName }}
+    <h2>{{ i18n "compile-gear" }}</h2>
+    <p>{{ i18n "compile-gear-desc" $scratch | markdownify }}</h2>
+
+    {{ partialCached "announcements/about_kde.html" . }}
+    {{ partialCached "announcements/press_contacts.html" . }}
+    {{ partial "copyright.html" . }}
+  </main>
+{{ end }}

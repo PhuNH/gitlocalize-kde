@@ -1,0 +1,21 @@
+<section class="swiper-container d-flex swiper-container-initialized swiper-container-horizontal mb-5" aria-label="Screenshots role=" list="">
+  <div class="swiper-wrapper d-flex my-3" role="listitem">
+    {{ $first := true }}
+    {{ range $.Page.Params.screenshots }}
+      <div class="swiper-slide {{ if $first }}{{ $first = false }}swiper-slide-active{{ end }}">
+        <figure class="text-center">
+          {{ if (in .url "/") }}
+          <img src="{{ .url }}" alt="{{ .name }}" style="max-height: 400px">
+          {{ else }}
+          <img src="{{ $.Page.Permalink }}{{ .url }}" alt="{{ .name }}" style="max-height: 400px">
+          {{ end }}
+          <figcaption class="mt-0">{{ .name }}</figcaption>
+        </figure>
+      </div>
+    {{ end }}
+  </div>
+  <div class="swiper-pagination swiper-pagination-bullets"><span class="swiper-pagination-bullet swiper-pagination-bullet-active"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span><span class="swiper-pagination-bullet"></span></div>
+  <div class="swiper-button-prev swiper-button-disabled" tabindex="0" role="button" aria-label="{{ i18n "prev-slide" }}" aria-disabled="true"></div>
+  <div class="swiper-button-next" tabindex="0" role="button" aria-label="{{ i18n "next-slide" }}" aria-disabled="false"></div>
+  <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+</section>

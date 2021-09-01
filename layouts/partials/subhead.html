@@ -1,0 +1,7 @@
+<meta name="description" content="{{ partial "fn/i18n_description" . }}">
+{{ $title := partial "fn/i18n_title" . }}
+<title>{{ $title }} - {{ i18n "site-title" }}</title>
+{{ with .OutputFormats.Get "RSS" }}<link href="{{ .RelPermalink }}" rel="alternate" type="application/rss+xml" title="{{ $title }}" />{{ end }}
+
+{{ partial "opengraph.html" . }}
+{{ partial "twitter_cards.html" . }}

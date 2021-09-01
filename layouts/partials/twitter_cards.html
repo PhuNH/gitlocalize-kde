@@ -1,0 +1,13 @@
+<meta name="twitter:title" content="{{ partial "fn/i18n_title" . }}"/>
+<meta name="twitter:description" content="{{ partial "fn/i18n_description" . }}"/>
+{{- with .Params.images }}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
+{{ else -}}
+{{- with .Site.Params.images }}
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="{{ index . 0 | absURL }}"/>
+{{ else -}}
+<meta name="twitter:card" content="summary"/>
+{{- end -}}
+{{- end }}

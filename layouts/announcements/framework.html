@@ -1,0 +1,40 @@
+{{ define "main" }}
+<style>
+.release-framework-heading {
+  background: #01d486;
+  background: linear-gradient(128deg, #01d486 0%, #3daee8 100%);
+  text-shadow: 0 0 0px #fff;
+  color: white;
+  padding-bottom: 20px;
+}
+.release-framework-heading a, .release-framework-heading a:hover {
+  color: white;
+}
+.release-framework-heading::after {
+  width: 0;
+  height:0;
+}
+
+.kde-logo-big {
+  background-color: inherit;
+  font-family: glyph;
+  font-size: 7em;
+}
+</style>
+
+{{ $scratch := newScratch }}
+{{ $scratch.Set "version" .File.TranslationBaseName }}
+
+<header class="release-framework-heading pt-5 mb-5">
+  <div class="container text-center">
+    <span class="kde-logo-big">K</span>
+    <h2 class="mt-0"><a href="/announcements/">{{ i18n "release-announcements" }}</a><h2>
+    <h1>{{ i18n "kde-framework" $scratch }}</h1>
+  </div>
+</header>
+<main class="releaseAnnouncment container">
+  {{ partial "rss_content.html" . }}
+
+  {{ partial "announcements/frameworks_footer.html" . }}
+</main>
+{{ end }}

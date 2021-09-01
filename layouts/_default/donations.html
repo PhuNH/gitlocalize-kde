@@ -1,0 +1,68 @@
+{{ define "main" }}
+<main>
+  <section id="top" class="mt-0">
+    <div class="container text-center py-4">
+      <h1 class="text-white">{{ .Title }}</h1>
+      <p style="max-width: 700px" class="h2 mx-auto">
+        {{ .Description }}
+      </p>
+      <form class="h2" style="border: none; box-shadow: none; margin-top: 0; padding-top: 1em;" action="https://www.paypal.com/cgi-bin/webscr" method="post" onsubmit='return amount.value >= 2 || window.confirm({{ i18n "donation-too-small" }});'>
+        {{ partialCached "donation_fields.html" . }}
+        <input type="hidden" name="custom" value="//kde.org/community/donations/index.php/donation_button">
+        <input type="text" name="amount" value="30" style="vertical-align:middle;text-align:right;" size="4"> €
+        <br />
+        <input type="image" class="text-white mt-4" name="submit" src="/paypal.png" alt="PayPal" style="vertical-align:middle;">
+      </form>
+      <p><a class="learn-more text-white mt-3" href="/community/donations/others">{{ i18n "other-donate" }}</a></p>
+      <p><a class="learn-more text-white" href="/community/donations/previousdonations">{{ .Params.previous }}</a></p>
+    </div>
+  </section>
+
+  <section class="container">
+    <div class="row">
+      <div class="col-12 col-md-6">
+        <h2>{{ .Params.supporting.title }}</h2>
+        <p>{{ .Params.supporting.text }}</p>
+        <a href="https://relate.kde.org">{{ i18n "learn-more" }}</a>
+      </div>
+      <div class="col-12 col-md-6">
+        <h2>{{ .Params.supporting_corp.title }}</h2>
+        <p>{{ .Params.supporting_corp.text }}</p>
+        <a href="https://ev.kde.org/getinvolved/supporting-members">{{ i18n "learn-more" }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container text-center">
+    <h2 class="h1 mb-4">{{ .Params.learn }}</h2>
+    <p style="max-width: 830px" class="mx-auto">
+      {{ .Params.activity }}
+    <p>
+    <div class="row">
+      {{ range .Params.reports }}
+      <div class="col-12 col-md-4 mt-4">
+          <a href="{{ .link }}" class="card shadow d-flex flex-column" style="background-image: url('{{ .image }}') !important; height: 300px; background-size: cover !important;background-repeat: no-repeat !important; background-position: center !important">
+              <h2 class="mt-auto mb-0 p-2" style="color: white; background-color: #000000bb;">{{ .name }}</h2>
+        </a>
+      </div>
+      {{ end }}
+    </div>
+    <div class="text-center mt-4"><a href="https://kde.org" class="button">{{ i18n "whatiskde-button" }}</a></div>
+  </section>
+
+  <section class="section-community section-blue py-5">
+    <div class="container text-center">
+      <h1 class="mb-3" id="community">{{ .Params.support }}</h1>
+      <p style="max-width: 800px" class="mx-auto">{{ .Params.support_text }}</p>
+    </div>
+    <div class="text-center">
+      <h2 class="text-center mx-auto">{{ .Params.kdeev }}</h2>
+      <p class="mx-auto" style="max-width: 600px">{{ .Params.kde }}</p>
+    </div>
+    <div class="text-center">
+      <h2 class="text-center mx-auto">{{ .Params.hwsv }}</h2>
+      <p>{{ .Params.hwsv_donation | markdownify }}</p>
+    </div>
+  </section>
+</main>
+{{ end }}

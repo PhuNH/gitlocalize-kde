@@ -1,0 +1,21 @@
+{{ define "main" }}
+  
+<main class="releaseAnnouncment">
+  <div class="text-center py-5 header-plasma20" style="background: radial-gradient(circle, #c203c5 0%, #4e02a7 80%); color: white">
+    <div class="laptop-with-overlay d-block mt-5 mb-3 mx-auto w-100" style="max-width: 1000px">
+      <img class="laptop img-fluid" src="/reusable-assets/laptop.svg" alt="empty laptop with an overlay">
+      <div class="laptop-overlay">
+        <img class="img-fluid" src="/announcements/plasma/5/5.20.0/plasma.jpg" alt="Plasma" />
+      </div>
+    </div>
+    <div class="container">
+      <p class="text-center">{{ partial "i18n_date.html" . }}</p>
+      <h1 class="h2">{{ i18n "plasma-5-20" }}</h1>
+      <h2 class="h1">{{ i18n "plasma-5-20-slogan" }}</h2>
+      <p class="h5 mx-auto text-center" style="max-width: 600px">{{ i18n "plasma-5-20-description" }}</p>
+    </div>
+  </div>
+  {{ .Content }}
+  {{ partial "announcements/plasma_footer.html" . }}
+</main>
+{{ end }}

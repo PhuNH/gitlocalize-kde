@@ -1,0 +1,44 @@
+{{/*
+SPDX-FileCopyrightText: 2021 Nguyen Hung Phu <phuhnguyen@disroot.org>
+SPDX-License-Identifier: LGPL-3.0-or-later
+*/}}
+
+{{ $result := "" }}
+
+{{ with .Title }}{{ $result = . }}
+{{ else }}
+  {{ if .IsHome }}{{ $result = i18n "home" }}
+  {{ else if eq .Params.layout "plasma" }}
+    {{ $version := .File.TranslationBaseName }}
+    {{ $major := index (split $version ".") 0 | int }}
+    {{ $minor := index (split $version ".") 1 | int }}
+    {{ $patch := index (split $version ".") 2 | int }}
+    {{ $msgName := "" }}
+    {{ $versionStr := "" }}
+
+    {{ if and (gt $patch 0) (lt $patch 50) }}
+      {{ $msgName = printf "annc-plasma-bugfix-title-%d" .Params.date.Month }}
+      {{ $versionStr = $version }}
+    {{ else if eq $patch 0 }}
+      {{ $msgName = "annc-plasma-release-title" }}
+      {{ $versionStr = print $major "." $minor }}
+    {{ else }}
+      {{ $msgName = "annc-plasma-beta-title" }}
+      {{ $versionStr = print $major "." (add (int $minor) 1) }}
+    {{ end }}
+    {{ $result = replace (i18n $msgName) "%ver" $versionStr }}
+  {{ else if eq .Params.layout "framework" }}
+    {{ $version := .File.TranslationBaseName }}
+    {{ $major := index (split $version ".") 0 | int }}
+    {{ $minor := index (split $version ".") 1 | int }}
+    {{ $msgName := "" }}
+
+    {{ if and (eq $major 5) (lt $minor 76) }}
+      {{ $msgName = "annc-frameworks-title-pre-5-76" }}
+    {{ else }}
+      {{ $msgName = "annc-frameworks-title" }}
+    {{ end }}
+    {{ $result = replace (i18n $msgName) "%ver" $version }}
+  {{ end }}
+{{ end }}
+{{ return $result }}

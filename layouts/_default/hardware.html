@@ -1,0 +1,141 @@
+{{ define "main" }}
+<main>
+  <div class="container mb-5">
+    <h1>{{ .Title }}</h1>
+    <p style="max-width: 550px">{{ .Params.subtitle }}</p>
+  </div>
+
+  {{ with .Params.pinephone }}
+  <section class="pt-4 pb-5 pinephone diagonal-box">
+    <div class="container content">
+      <div class="row text-center">
+        <div class="col-12 mb-4">
+          <h2 class="h1">{{ .title }}</h2>
+          <h3 class="h3">{{ .subtitle }}</h3>
+          <div class="mx-auto mb-4" style="max-width: 700px">
+            {{ .description | markdownify }}
+          </p>
+        </div>
+        <img src="/content/hardware/pinephone.png" class="mx-auto img-fluid" style="width: 600px" alt="{{ .alt }}"/>
+      </div>
+      <div class="container text-center">
+        <div style="max-width: 700px" class="mx-auto mt-4">{{ .specification | markdownify }}</p>
+        <a href="https://www.pine64.org/" class="learn-more button mt-3 mb-3 d-inline-block">{{ .learn }}</a><br />
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.slimbook }}
+  <div class="container text-center">
+    <h2 class="mb-4 h1">{{ .title }}</h1>
+    <h3 class="h2">{{ .subtitle }}</h2>
+    <p class="h5 text-md mx-auto" style="max-width: 700px">{{ .description }}</p>
+  </div>
+  <div style="max-width: 1300px" class="w-100 mx-auto mb-4">
+      <img src="https://kde.slimbook.es/assets/img/duo-ok.png" class="img-fluid" alt="{{ .alt }}">
+  </div>
+  <div class="diagonal-box bg-two">
+    <section class="container content">
+      <h2 class="text-center mb-4">{{ .choose }}</h2>
+      <div class="hardware-grid">
+        <div class="slimbook-small">
+          <img src="https://kde.slimbook.es/assets/img/14.png" aria-hidden="true" alt="{{ .slim14 }}"/>
+        </div>
+        <div class="slimbook-small-desc h5">
+          <h2 class="h3 mt-0">{{ .slim14 }}</h2>
+          <div class="mb-2">{{ .amd }}</div>
+          <div class="mb-2">{{ .screen14 }}</div>
+          <div class="mb-2">{{ .ssd }}</div>
+          <div class="mb-2">{{ .ram }}</div>
+          <div class="mb-2">{{ .watt }}</div>
+          <div class="mb-3">{{ .kg }}</div>
+          <div><a href="https://slimbook.es/en/store/slimbook-kde/kde-slimbook-14-comprar">{{ .configure }}</a></div>
+        </div>
+        <div class="slimbook">
+          <img src="https://kde.slimbook.es/assets/img/15.png" aria-hidden="true" alt="{{ .slim16 }}">
+        </div>
+        <div class="slimbook-desc h5">
+          <h2 class="h3 mt-0">{{ .slim16 }}</h2>
+          <div class="mb-2">{{ .amd }}</div>
+          <div class="mb-2">{{ .screen16 }}</div>
+          <div class="mb-2">{{ .ssd }}</div>
+          <div class="mb-2">{{ .ram }}</div>
+          <div class="mb-2">{{ .watt16 }}</div>
+          <div class="mb-3">{{ .kg16 }}</div>
+          <div><a href="https://slimbook.es/en/store/slimbook-kde/kde-slimbook-15-comprar">{{ .configure }}</a></div>
+        </div>
+      </div>
+      <div class="text-center"><a href="https://kde.slimbook.es/specs/" class="learn-more h4 mt-5">{{ .full }}</a></div>
+    </section>
+  </div>
+  {{ end }}
+
+  {{ with .Params.kfocus }}
+  <section class="pt-4 pb-5 kfocus diagonal-box">
+    <div class="container content">
+      <div class="row text-center">
+        <div class="col-12">
+          <h2 class="h1" id="focus">{{ .title }}</h2>
+          <h3 class="h3">{{ .subtitle }}</h3>
+          <p class="mx-auto" style="max-width: 700px">
+            {{ .description }}
+          </p>
+        </div>
+        <div class="col-12 mt-4">
+          <img src="https://kfocus.org/img/spec/m2/KFOCUS-laptop-m2-front-696-15.6-MEDIUM-80p.jpg" alt="{{ .alt }}" class="img-fluid">
+        </div>
+      </div>
+      <div>
+        <h3>{{ .specification }}</h3>
+        <p>
+          <b>{{ .operating }}</b> <a href="https://kubuntu.org">Kubuntu</a><br />
+          <b>{{ .cpu }}</b> {{ .cpu_desc }}<br />
+          <b>{{ .gpu }}</b> {{ .gpu_desc }}<br />
+          <b>{{ .memory }}</b> {{ .memory_desc }}<br />
+          <b>{{ .display }}</b> {{ .display_desc }}<br />
+          <b>{{ .storage }}</b> {{ .storage_desc }}<br />
+          <b>{{ .price }}</b> {{ .price_desc }}
+        </p>
+        <a href="https://kfocus.org/" class="learn-more button mt-3 mb-3 d-inline-block">{{ i18n "learn-more" }}</a><br />
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  {{ with .Params.pinebook }}
+  <section class="diagonal-box bg-purple pt-4 pb-5">
+    <div class="container content">
+      <div class="row">
+        <div class="col-12 col-md-5 col-lg-6">
+          <h2 id="pinebook">{{ .title }}</h2>
+          <p>{{ .description }}</p>
+        </div>
+        <div class="col-12 col-md-7 col-lg-6 align-self-center mt-4">
+          <img src="/content/hardware/pinebook-pro.png" alt="{{ .alt }}" class="laptop-picture">
+        </div>
+      </div>
+      <div>
+        <h3>{{ .specification }}</h3>
+        <p>
+          <b>{{ .operating }}</b> <a href="https://manjaro.org">Manjaro KDE</a><br />
+          <b>{{ .cpu }}</b> Rockchip RK3399 SOC<br />
+          <b>{{ .gpu }}</b> Mali T860 MP4<br />
+          <b>{{ .memory }}</b> 4GB LPDDR4 <br />
+          <b>{{ .display }}</b> {{ .display_desc }}<br />
+          <b>{{ .storage }}</b> {{ .storage_desc }}<br />
+          <b>{{ .price }}</b> {{ .price_desc }}
+        </p>
+        <a href="https://www.pine64.org/pinebook-pro/" class="learn-more button mt-3 mb-3 d-inline-block">{{ i18n "learn-more" }}</a><br />
+      </div>
+    </div>
+  </section>
+  {{ end }}
+
+  <div class="container py-5">
+    <h1>{{ .Params.hardware_option }}</h1>
+    <p>{{ .Params.hardware_desc }}</p>
+  </div>
+  {{ .Content }}
+</main>
+{{ end }}

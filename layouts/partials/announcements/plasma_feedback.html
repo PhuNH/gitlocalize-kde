@@ -1,0 +1,10 @@
+<section class="give-feedback">
+  <h2>{{ i18n "feedback" }}</h2>
+  <p class="kSocialLinks">
+    {{ i18n "give-feedback" }}
+    {{ partialCached "social_links.html" . }}
+  </p>
+  <p align="justify">{{ i18n "discuss-forum" | markdownify }}</p>
+  <p align="justify">{{ i18n "report-bug-plasma" | markdownify }}</p>
+  <p align="justify">{{ i18n "feedback-appreciated" }}</p>
+</section>

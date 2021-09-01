@@ -1,0 +1,94 @@
+{{ define "main" }}
+<main>
+  <div class="container">
+    <div class="text-center my-5 mx-auto" style="max-width: 600px">
+      {{ if fileExists (printf "/static/for/resources/kids_headline_title_%s.svg" .Language.Lang) }}
+        <img src="{{ printf "/for/resources/kids_headline_title_%s.svg" .Language.Lang }}" alt="{{ .Title }}" class="img-fluid" />
+      {{ else }}
+        <h1 class="playful" aria-label="{{ .Title }}">
+        {{ $title := .Title }}
+        {{- range (union (slice 0) (seq (sub (strings.RuneCount .Title ) 1))) -}}
+          <span aria-hidden="true">{{substr $title . 1}}</span>
+        {{- end -}}
+        </h1>
+      {{ end }}
+    </div>
+  </div>
+  <div class="gcompris py-5 px-4 position-relative" style="background-image: url('/for/resources/childrenbackground1.svg'); background-position-y: bottom; color: black; text-shadow: 1px 1px 6px white">
+    <div class="d-flex flex-column container">
+      <div class="text-center d-flex align-items-center justify-content-center">
+        <div>
+          <h2 style="color: black !important">GCompris</h2>
+          <p class="h5 mx-auto" style="max-width: 400px">
+            {{ .Params.gcompris }}
+          </p>
+          <p><a class="learn-more h3 mt-4" href="https://gcompris.net/downloads-{{ .Language.Lang }}.html" hreflang="{{ .Site.LanguagePrefix }}">{{ .Params.download }}</a></p>
+          <p><a href="https://gcompris.net/" class="learn-more h3">{{ i18n "learn-more" }}</a></p>
+        </div>
+        <div class="text-md-center d-none d-md-block">
+          <img src="/for/resources/konqilearn.png" class="img-fluid" />
+        </div>
+      </div>
+      <img src="https://cdn.kde.org/screenshots/gcompris/gcompris.png" style="box-shadow: 0 .5rem 2rem rgba(0,0,0,.50) !important;" class="w-100 my-5" />
+    </div>
+  </div> 
+  <div class="py-5 section-blue"> 
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row align-items-center">
+        <div class="text-md-left text-center">
+          <h2 class="h1">KTuberling</h2>
+          <p class="h5 mx-auto" style="max-width: 700px">{{ .Params.kturberling }}</p>
+          <p><a class="button" href="https://apps.kde.org{{ .Site.LanguagePrefix }}/ktuberling" hreflang="{{ .Language.Lang }}">{{ .Params.download }}</a></p>
+        </div>
+        <div class="text-md-center">
+          <img src="/for/resources/kturberling.png" class="img-fluid" />
+        </div>
+      </div>
+    </div> 
+  </div> 
+  <div class="py-5 container">
+    <div class="d-flex flex-column flex-md-row align-items-center">
+      <div class="text-md-left text-center">
+        <h2 class="h1">KLettres</h2>
+        <p class="h5 mx-auto" style="max-width: 700px">{{ .Params.klettres }}</p>
+        <p><a class="button" href="https://apps.kde.org{{ .Site.LanguagePrefix }}/klettres" hreflang="{{ .Language.Lang }}">{{ .Params.download }}</a></p>
+      </div>
+      <div class="text-center">
+        <img src="https://cdn.kde.org/screenshots/klettres/klettres.png" class="img-fluid" />
+      </div>
+    </div>
+  </div>
+  <div class="py-5 section-blue"> 
+    <div class="container">
+      <div class="text-center">
+        <h2 class="h1">KolourPaint</h2>
+        <p class="h5 mx-auto" style="max-width: 700px">{{ .Params.kolourpaint }}</p>
+        <p><a class="button" href="https://apps.kde.org{{ .Site.LanguagePrefix }}/kolourpaint" hreflang="{{ .Language.Lang }}">{{ .Params.download }}</a></p>
+      </div>
+      <div class="d-flex flex-column flex-md-row align-items-center">
+        <div class="text-md-center d-none d-md-block">
+          <img src="/for/resources/konqipaint.png" class="img-fluid" />
+        </div>
+        <div class="text-md-center">
+          <img src="/for/resources/kolourpaint.png" class="img-fluid" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="text-center">
+      <h2 class="h1">{{ .Params.gamestitle }}</h2>
+      <p class="h5 mx-auto" style="max-width: 700px">{{ .Params.games }}</p>
+      <p><a class="button" href="https://apps.kde.org{{ .Site.LanguagePrefix }}/games" hreflang="{{ .Language.Lang }}">{{ .Params.download }}</a></p>
+    </div>
+    <div class="d-flex flex-column flex-md-row align-items-center">
+      <div class="text-md-center d-none d-md-block">
+        <img src="/for/resources/konqigame.png" class="img-fluid" />
+      </div>
+      <div class="text-md-center order-md-0">
+        <img src="https://cdn.kde.org/screenshots/kapman/kapman.png" class="img-fluid" />
+      </div>
+    </div>
+  </div> 
+</main>
+{{ end }}

@@ -1,0 +1,18 @@
+{{/*
+SPDX-FileCopyrightText: 2021 Nguyen Hung Phu <phuhnguyen@disroot.org>
+SPDX-License-Identifier: LGPL-3.0-or-later
+*/}}
+
+{{- if eq .Params.layout "plasma" }}
+  {{ partial "announcements/plasma_intro.html" . }}
+  {{ .Content }}
+  {{ $major := path.Base .File.Dir }}
+  {{ with .Params.changelog }}
+  <a href="/announcements/changelogs/plasma/{{$major}}/{{ . }}">{{ i18n "view-changelog" }}</a>
+  {{ end }}
+{{- else if eq .Params.layout "framework" }}
+  {{ partial "announcements/frameworks_intro.html" . }}
+  {{ .Content }}
+{{- else }}
+  {{ .Content }}
+{{- end -}}

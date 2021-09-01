@@ -1,0 +1,207 @@
+{{ define "main" }}
+<main>
+<section class="container">
+  <div class="text-center">
+    <h1>{{ .Params.plasmais }}</h1>
+    <img
+      src="/images/plasma.svg"
+      width="64"
+      height="64"
+      class="mt-3 mb-3"
+      alt="{{ .Params.logoplasma }}"
+    />
+    <p class="ml-auto mr-auto">
+      {{ .Content }}
+    </p>
+    <div class="d-flex flex-column flex-md-row justify-content-center">
+      <a href="/distributions" class="button m-3">{{ .Params.get }}</a>
+      <a href="/hardware" class="button m-3">{{ .Params.buy }}</a>
+    </div>
+  </div>
+  <div class="laptop-with-overlay d-block mt-5 mb-3 mx-auto w-100" style="max-width: 1000px">
+    <img class="laptop img-fluid" src="/reusable-assets/laptop.svg" alt="">
+    <div class="laptop-overlay">
+      <img class="img-fluid" src="/announcements/plasma/5/5.22.0/plasma.webp" alt="{{ i18n "plasma" }} ">
+    </div>
+  </div>
+</section>
+
+<section id="plasma-last-release">
+  <div class="breeze-window">
+    <div class="kwin-shadow">
+      <div class="headerbar">
+        {{ .Params.plasma_release }}
+        <img
+          alt=""
+          src="/content/plasma-desktop/window-minimize.svg"
+          class="window-minimize"
+        />
+        <img
+          alt=""
+          src="/content/plasma-desktop/window-maximize.svg"
+          class="window-maximize"
+        />
+        <img
+          alt=""
+          src="/content/plasma-desktop/window-close.svg"
+          class="window-close"
+        />
+      </div>
+      <div class="view">
+        <h2>{{ .Params.plasma_release_title }}</h2>
+        <p>{{ .Params.plasma_release_desc }}</p>
+        <a href="/announcements/plasma/5/5.22.0" class="breeze-button">{{ .Params.see_announcements }}</a><br />
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ $index_part := 0 }}
+{{ range .Params.parts }}
+<section class="section-{{ .color }}">
+  <div class="container">
+    <div class="text-center mb-4 mx-auto" style="max-width: 800px">
+      <h2>{{ .title }}</h2>
+      {{ if gt (len .text) 100 }}
+      <p class="h5">{{ .text }}</p>
+      {{ else }}
+      <p class="h4">{{ .text }}</p>
+      {{ end }}
+    </div>
+    <ul class="nav justify-content-center nav-features" role="tablist">
+      {{ $part_title := .title }}
+      {{ $first := true }}
+      {{ $index_slides := 0 }}
+      {{ range .slides }}
+        <li class="nav-item">
+          <a
+            class="nav-link {{ if $first }}{{ $first = false }}active{{ end }}"
+            role="tab"
+            href="#a{{ $index_part }}-{{ $index_slides }}"
+            data-toggle="tab"
+            aria-selected="true"
+            aria-controls="a{{ $index_part }}-{{ $index_slides }}"
+            id="a{{ $index_part }}-{{ $index_slides }}-control"
+            >{{ .title }}</a
+          >
+        </li>
+        {{ $index_slides = add $index_slides 1 }}
+      {{ end }}
+    </ul>
+  </div>
+  <div class="tab-content tab-content-feature pl-4 pr-4">
+    {{ $first := true }} 
+    {{ $index_slides = 0 }}
+    {{ range .slides }}
+    <div
+      class="tab-pane {{ if and .mobile .mobile.video }}two-videos{{ end }}{{ if .video }} video {{ end }} {{ if $first }}{{ $first = false }}active {{ end }}"
+      id="a{{ $index_part }}-{{ $index_slides }}"
+      role="tabpanel"
+      aria-labelledby="a{{ $index_part }}-{{ $index_slides }}-control"
+    >
+      {{ if .laptop }}
+        <div class="laptop-with-overlay {{ with .class }}{{ . }}{{ end }}">
+         <img
+           class="laptop img-fluid"
+           src="/reusable-assets/laptop.svg"
+           alt="empty laptop with an overlay"
+         />
+         <div class="laptop-overlay">
+           {{ if .video }}
+             <video src="{{ .video }}" class="img-fluid">
+           {{ else }}
+             <img
+               class="img-fluid"
+               src="{{ .src }}"
+               alt="{{ .alt }}"
+               loading="lazy"
+             />
+           {{ end }}
+         </div>
+        </div>
+      {{ else }}
+        <div class="plasma-and-android row align-items-center">
+          <div class="col-4 col-md-3">
+            <div class="phone-with-overlay">
+              <img
+                class="phone img-fluid"
+                src="/content/plasma-desktop/phone.png"
+                alt=""
+              />
+              <div class="phone-overlay">
+                {{ if .mobile.video }}
+                  <video src="{{ .mobile.video }}" class="img-fluid">
+                {{ else }}
+                  <img
+                    class="img-fluid"
+                    src="{{ .mobile.src }}"
+                    alt="{{ .mobile.alt }}"
+                    loading="lazy"
+                  />
+                {{ end }}
+              </div>
+            </div>
+          </div>
+          <div class="col-8 col-md-9">
+            <div class="laptop-with-overlay">
+              <img
+                class="laptop img-fluid"
+                src="/reusable-assets/laptop.svg"
+                alt=""
+              />
+              <div class="laptop-overlay">
+                {{ if .desktop.video }}
+                  <video src="{{ .desktop.video }}" class="img-fluid">
+                {{ else }}
+                  <img
+                    class="img-fluid"
+                    src="{{ .desktop.src }}"
+                    alt="{{ .desktop.alt }}"
+                    loading="lazy"
+                  />
+                {{ end }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {{ end }}
+      <div class="container">
+        {{ if or .video (and .mobile .mobile.video) }}
+          <div class="text-center">
+            <button class="button d-none">{{ i18n "replay" }}</button><br />
+          </div>
+        {{ end }}
+
+        {{ .text | markdownify }}
+      </div>
+      {{ if .download  }}
+        <h3>{{ .download }}</h3>
+        <div>
+          <a href="https://f-droid.org/en/packages/org.kde.kdeconnect_tp/"
+            ><img
+              src="/content/plasma-desktop/Get_it_on_F-Droid.svg"
+              alt="{{ .fdroid }}"
+              class="download-button-img"
+          /></a>
+          <a
+            href="https://play.google.com/store/apps/details?id=org.kde.kdeconnect_tp"
+            ><img
+              alt="{{ .play }}"
+              src="/content/plasma-desktop/get-it-from-google-play.png"
+              class="download-button-img playstore"
+          /></a>
+        </div>
+      {{ end }}
+    </div>
+    {{ $index_slides = add $index_slides 1 }}
+    {{ end }}
+  </div>
+</section>
+{{ $index_part = add $index_part 1 }}
+{{ end }}
+
+<section class="container">
+  <small>{{ .Params.trademark }}</small>
+</section>
+</main>
+{{end}}

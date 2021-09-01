@@ -1,0 +1,50 @@
+{{ define "main" }}
+<main class="container mb-3">
+  <script type="text/javascript">
+    function toggle(toggleUlId, toggleAElem) {
+      var e = document.getElementById(toggleUlId);
+      if (e.style.display == "none") {
+        e.style.display = "block";
+        toggleAElem.innerHTML = "[Hide]";
+      } else {
+        e.style.display = "none";
+        toggleAElem.innerHTML = "[Show]";
+      }
+    }
+  </script>
+  {{ if .Params.plasma }}
+  {{ $major := path.Base .File.Dir }}
+  <h3>
+    <a href="/announcements/plasma/{{$major}}/{{.Params.version}}">Plasma {{.Params.version}}</a> Complete Changelog
+  </h3>
+  {{ else if .Params.gear }}
+  <h3>KDE Gear {{.File.TranslationBaseName}} Full Log Page</h3>
+  <p>
+    This is the automated full changelog for
+    <a href="/announcements/gear/{{.File.TranslationBaseName}}">KDE Gear {{.File.TranslationBaseName}}</a>
+    from the git repositories.
+  </p>
+  {{ else if .Params.release }}
+  <h3>Release Service {{.Params.version}} Full Log Page</h3>
+  <p>
+    This is the automated full changelog for
+    {{ if .Params.releaseDate }}
+    <a href="/announcements/releases/{{.Params.releaseDate}}-apps-update">Release Service {{.Params.version}}</a>
+    {{ else }}
+    Release Service {{.Params.version}}
+    {{ end }}
+    from the git repositories.
+  </p>
+  {{ else }}
+  <h3>KDE Applications {{.Params.version}} Full Log Page</h3>
+  <p>
+    This is the automated full changelog for
+    <a href="/announcements/applications/{{.Params.version}}">KDE Applications {{.Params.version}}</a>
+    from the git repositories.
+  </p>
+  {{ end }}
+  
+  {{ .Content }}
+  
+</main>
+{{ end }}

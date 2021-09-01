@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="container" role="main">
+  <h1>{{ .Title }}</h1>
+
+  <p>
+  For new features, bugfixes and changes read the <a href="{{ .Params.announcement }}">KDE Applications {{ .Params.version }} announcement</a>.
+  </p>
+
+  <h2>Security Issues</h2>
+
+  <p>Please report possible problems to <a href="m&#x61;i&#00108;&#x74;o:&#115;ec&#117;&#x72;&#00105;&#x74;&#121;&#x40;kde.&#00111;&#x72;g">&#x73;&#101;&#x63;u&#114;i&#x74;y&#x40;kd&#101;.&#x6f;&#00114;&#103;</a>.</p>
+
+  <h2><a name="bugs">Bugs</a></h2>
+
+  <p>This is a list of grave bugs and common pitfalls surfacing after the release was packaged:</p>
+
+  <ul>
+    {{ if .Params.bugs }}
+      {{ range .Params.bugs }}
+        {{ . }}
+      {{ end }}
+    {{ else }}
+      <li>None.</li>
+    {{ end }}
+  </ul>
+
+  <p>Please check the <a href="http://bugs.kde.org/">bug database</a>
+  before filing any bug reports. Also check for possible updates on this page
+  that might describe or fix your problem.</p>
+
+  <h2>Download and Installation</h2>
+
+  <p>
+  <a href="{{ .Params.build_instructions | default "https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source" }}">Build instructions</a>
+   are available on our Community wiki.
+  </p>
+
+  <h3><a name='desktop'>KDE Applications {{ .Params.version }} Release</a></h3>
+
+  <h4><a name="binary">Binary packages</a></h4>
+
+  <p>
+    Some Linux/UNIX OS vendors have kindly provided binary packages of
+    KDE Applications {{ .Params.version }} for some versions of their distribution.
+    You can find a list at <a href="http://community.kde.org/Binary_Packages">http://community.kde.org/Binary_Packages</a>
+  </p>
+
+  <h4><a name="source">Source Code</a></h4>
+  <p>
+    The complete source code for KDE Applications {{ .Params.version }} is available for download:
+  </p>
+
+  {{ if .Params.signer }}
+  <p>
+  The tarballs have been signed by {{ .Params.signer }} <a href="http://pgp.mit.edu/pks/lookup?op=get&amp;search=0x{{ .Params.signing_fingerprint }}">{{ .Params.signing_fingerprint }}</a>.
+  </p>
+  {{ end }}
+
+  {{ readFile (printf "%s%s%s%s" .File.Dir "sources/source-applications-" .Params.version ".html") | safeHTML }}
+</div>
+{{ end }}

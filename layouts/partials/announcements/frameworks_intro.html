@@ -1,0 +1,23 @@
+{{/*
+SPDX-FileCopyrightText: 2021 Nguyen Hung Phu <phuhnguyen@disroot.org>
+SPDX-License-Identifier: LGPL-3.0-or-later
+*/}}
+
+{{ with .Params.src }}
+<figure><img src="{{ . }}"></figure>
+{{ end }}
+
+{{ if not .Params.customIntro }}
+{{ $scratch := newScratch }}
+{{ $scratch.Set "version" .File.TranslationBaseName }}
+{{ $scratch.Set "libCount" .Params.libCount }}
+{{ $major := index (split .File.TranslationBaseName ".") 0 }}
+{{ $scratch.Set "firstAnncLink" (printf "/announcements/frameworks/%s/%s.0" $major $major) }}
+
+<p>{{ partial "i18n_date.html" . }}</p>
+<p>{{ i18n "annc-frameworks-text" $scratch }}</p>
+<p>{{ i18n "annc-frameworks-intro" $scratch | markdownify }}</p>
+<p>{{ i18n "annc-frameworks-intro-2" }}</p>
+
+<h2 id="new-in-this-version">{{ i18n "annc-frameworks-new" }}</h2>
+{{ end }}

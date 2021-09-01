@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="{{ .Lang }}" itemscope itemtype="http://schema.org/WebPage">
+<head>
+  {{- partial "head.html" . -}}
+  {{- block "head-import" . }}{{- end }}
+
+  {{ $style := resources.Get "sass/announcements.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+
+  {{ range .Params.sassFiles }}
+  {{ $style := resources.Get . | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.Permalink }}">
+  {{ end }}
+
+  {{ range .Params.jsFiles }}
+  <script src="{{ . }}" defer=""></script>
+  {{ end }}
+</head>
+<body>
+  {{- partial "header.html" . -}}
+  <div id="main">
+  {{- block "main" . }}{{- end }}
+  </div>
+  {{- partial "footer.html" . -}}
+</body>
+</html>

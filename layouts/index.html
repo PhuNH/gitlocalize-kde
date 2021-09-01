@@ -1,0 +1,238 @@
+{{ define "head-import" }}
+{{ $style := resources.Get "sass/index.scss" | toCSS | minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink }}">
+{{ end }}
+
+{{ define "main" }}
+<main id="home">
+  <section class="text-center py-4 mt-0 header-plasma20" style="background-image: url(/announcements/plasma/5/5.22.0/volma.webp);background-size:cover; color: white">
+    <h1>{{ i18n "plasma" }}</h1>
+    <h2>{{ i18n "plasma-desc" }}</h2>
+    <div class="laptop-with-overlay d-block mt-5 mb-3 mx-auto w-100" style="max-width: 1000px">
+      <img class="laptop img-fluid" src="/reusable-assets/laptop.svg" alt="empty laptop with an overlay" width=2000 height=1220>
+      <div class="laptop-overlay">
+        <picture>
+          <source srcset="/announcements/plasma/5/5.22.0/plasma-dark.webp" media="(prefers-color-scheme: dark)" type="image/webp">
+          <source srcset="/announcements/plasma/5/5.22.0/plasma.webp" media="(prefers-color-scheme: light)" type="image/webp">
+          <img class="img-fluid" src="/announcements/plasma/5/5.22.0/plasma.png" alt="Plasma" />
+        </picture>
+      </div>
+    </div>
+    <div class="container mt-2 mb-5">
+      <div class="text-center">
+        <a href="{{ "/distributions" | relLangURL }}" hreflang="{{ .Site.LanguagePrefix }}" class="learn-more btn btn-primary my-2 mx-3">{{ i18n "plasma-install" }}</a>
+        <a href="{{ "/plasma-desktop" | relLangURL }}" hreflang="{{ .Site.LanguagePrefix }}" class="learn-more btn btn-primary my-2 mx-3">{{ i18n "plasma-discover" }}</a>
+        <a href="/hardware" class="learn-more btn btn-primary my-2 mx-3">{{ i18n "plasma-buy" }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="kde-connect">
+    <div class="container">
+      <h2 class="h1">{{ i18n "kde-apps" }}</h2>
+      <h3 class="h2">{{ i18n "kde-powerful" }}</h3>
+      <p>{{ i18n "kde-app-description" | markdownify }}</p>
+      <p>
+      <a class="learn-more mt-3" hreflang="{{ .Site.LanguagePrefix }}" href="https://apps.kde.org{{ .Site.LanguagePrefix }}">{{ i18n "see-all-apps" }}</a>
+      </p>
+      <div>
+      <div class="row mb-5 mt-5 app" id="krita-showcaste">
+        <div class="col-12 col-lg-5 app-description mt-4">
+          <div>
+            <a href="https://krita.org"><img src="https://apps.kde.org/app-icons/org.kde.krita.svg" alt="{{ i18n "krita" }}" width="90" height="90"></a>
+            <h3 class="mt-1"><a href="https://krita.org">{{ i18n "krita" }}</a></h3>
+            <p>{{ i18n "krita-desc" }}
+          </div>
+        </div>
+        <a href="https://krita.org" class="col-12 col-lg-7"><img class="img-fluid" src="https://krita.org/wp-content/uploads/2019/08/krita-ui-40.png" alt="{{ i18n "krita-screen" }}" loading="lazy" width="1575" height="1004" /></a>
+      </div>
+      <div class="row mt-5 app" id="kdenlive-showcaste">
+        <div class="col-12 col-lg-5 app-description mt-4">
+          <div class="w-100">
+            <a href="https://kdenlive.org"><img src="/content/home/kdenlive.svg" alt="{{ i18n "kdenlive" }}" width="90" height="90"></a><br />
+            <h3 class="mt-1"><a href="https://kdenlive.org">{{ i18n "kdenlive" }}</a></h3>
+            <p>{{ i18n "kdenlive-desc" }}</p>
+          </div>
+        </div>
+        <a href="https://kdenlive.org" class="col-12 col-lg-7"><img class="img-fluid" src="https://apps.kde.org/thumbnails/org.kde.kdenlive/k1.png" alt="{{ i18n "kdenlive-screen" }}" width="720" height="379" loading="lazy" /></a>
+      </div>
+      <div class="row mt-5 app" id="kontact-showcaste">
+        <div class="col-12 col-lg-5 mt-4 app-description">
+          <div class="w-100">
+            <a href="https://kontact.kde.org"><img src="https://apps.kde.org/app-icons/org.kde.kontact.svg" alt="{{ i18n "kontact" }}" width="90" height="90"></a>
+            <h3 class="mt-1"><a href="https://kontact.kde.org">{{ i18n "kontact" }}</a></h3>
+            <p>{{ i18n "kontact-desc" }}</p>
+          </div>
+        </div>
+        <a href="https://kontact.kde.org" class="col-12 col-lg-7"><img class="img-fluid" src="https://cdn.kde.org/screenshots/kmail/kmail.png" alt="{{ i18n "kontact-screen" }}" loading="lazy" width="1295" height="1083" /></a>
+      </div>
+      <div class="row mb-5 app mt-5" id="kdevelop-showcaste">
+        <div class="col-12 col-lg-5 mt-4 app-description">
+          <div class="w-100">
+            <a href="https://kdevelop.org"><img src="https://apps.kde.org/app-icons/org.kde.kdevelop.svg" alt="{{ i18n "kdevelop" }}" width="90" height="90"></a>
+            <h3 class="mt-1"><a href="https://kdevelop.org">{{ i18n "kdevelop" }}</a></h3>
+            <p>{{ i18n "kdevelop-desc" }}</p>
+          </div>
+        </div>
+        <a href="https://kdevelop.org" class="col-12 col-lg-7"><img class="img-fluid" src="https://www.kdevelop.org/sites/www.kdevelop.org/files/inline-images/kdevelop5-breeze_2.png" alt="{{ i18n "kdevelop-screen" }}" loading="lazy" width="1043" height="683" /></a>
+      </div>
+      <div class="row app mt-5" id="gcompris-showcaste">
+        <div class="col-12 col-lg-5 mt-4 app-description">
+          <div class="w-100">
+            <a href="https://gcompris.net"><img src="https://apps.kde.org/app-icons/org.kde.gcompris.svg" alt="{{ i18n "gcompris" }}" width="90" height="90"></a>
+            <h3 class="mt-1"><a href="https://gcompris.net">{{ i18n "gcompris" }}</a></h3>
+            <p>{{ i18n "gcompris-desc" }}</p>
+          </div>
+        </div>
+        <a href="https://gcompris.net" class="col-12 col-lg-7"><img class="img-fluid" src="https://apps.kde.org/thumbnails/org.kde.gcompris/gcompris.png" alt="{{ i18n "gcompris-screen" }}" height="576" width="720" loading="lazy" /></a>
+      </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="section-blue">
+    <div class="container">
+      <h2 class="h1">{{ i18n "hardware" }}</h2>
+      <h2 class="h2">{{ i18n "buy-hardware" }}</h2>
+      <div class="hardware-grid">
+        <div class="pinebook">
+          <a href="https://www.pine64.org/pinebook-pro/">
+            <img src="/content/hardware/pinebook-pro.png" alt="{{ i18n "pinebook-pro" }}"/>
+          </a>
+        </div>
+        <div class="pinebook-desc">
+          <h3 class="h5"><a href="https://www.pine64.org/pinebook-pro/">{{ i18n "pinebook-pro" }}</a></h3>
+          <p class="text-left">{{ i18n "pinebook-pro-desc" }}</p>
+        </div>
+        <div class="slimbook">
+          <a href="https://kde.slimbook.es/">
+            <img src="/content/hardware/slimbook.png" alt="{{ i18n "slimbook" }}" />
+          </a>
+        </div>
+        <div class="slimbook-desc">
+          <h3 class="h5"><a href="https://kde.slimbook.es/">{{ i18n "slimbook" }}</a></h3>
+          <p class="text-left">{{ i18n "slimbook-pro" }}</p>
+        </div>
+        <div class="focus">
+          <a href="https://kfocus.org/">
+            <img src="/content/hardware/focus.png" alt="Kubuntu Focus"/>
+          </a>
+        </div>
+        <div class="focus-desc">
+          <h3 class="h5"><a href="https://kfocus.org/">{{ i18n "kfocus" }}</a></h3>
+          <p class="text-left">{{ i18n "kfocus-desc" }}</p>
+        </div>
+      </div>
+      <p>{{ i18n "other-hardware" }} <a href="/hardware">{{ i18n "see-all-hardware" }}</a></p>
+    </div>
+  </section>
+
+  <section class="section-green">
+    <div class="container my-4">
+      <h2 class="mb-3 h1">{{ i18n "announcements" }}</h2>
+      <div class="row">
+      {{ $pages := (.Site.GetPage "/announcements").RegularPagesRecursive }}
+      {{ range .Site.Home.Translations }}
+      {{ $pages = $pages | lang.Merge (.Site.GetPage "/announcements").RegularPagesRecursive }}
+      {{ end }}
+      {{ range first 4 (where $pages "Params.hidden" "ne" "true") }}
+        <div class="col-12 col-md-6 mb-4">
+          <div class="text-lighter">{{ partial "i18n_date.html" . }}</div>
+          <h3 class="mt-1 h4">{{ partial "fn/i18n_title" . }}</h3>
+          <div class="post-entry mt-3">
+            {{ partial "fn/i18n_description" . }}
+            {{ if .Truncated }}
+              <a href="{{ .Permalink }}" class="d-block mt-2">{{i18n "read-more" }}</a>
+            {{ end }}
+          </div>
+        </div>
+      {{end}}
+      </div>
+      <a href="announcements/" class="learn-more mt-3" style="font-weight: bold;">&#x1F4E2; {{ i18n "view-all-announcements" }}</a>
+    </div>
+  </section>
+
+  <section class="section-community section-blue">
+    <div class="container">
+      <h1 class="mb-3" id="community">{{ i18n "kde-community" }}</h1>
+      <h2>{{ i18n "kde-community-desc" }}</h2>
+      <p>{{ i18n "kde-community-desc2" }}</p>
+      <div class="text-center mb-3">
+        <a href="/community/whatiskde" class="button ml-2 mr-2">{{ i18n "whatiskde-button" }}</a>
+        <a href="https://community.kde.org/Get_Involved" class="noblefir ml-2 mr-2">{{ i18n "get-involved" }}</a>
+      </div>
+    </div>
+    <div class="community-grid container">
+      <figure class="text-center card community-1">
+        <picture class="img-fluid">
+          <source srcset="/content/people/lakademy-2019x2.jpg 1x, /content/people/lakademy-2019x2.jpg 2x">
+          <img src="/content/people/lakademy-2019x2.jpg" alt="{{ i18n "group-photo-lakademy" }}" class="img-fluid">
+        </picture>
+        <figcaption class="card-body">
+            <a href="https://lakademy.kde.org/">LaKademy 2018</a> - {{ i18n "Salvador" }}
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-2">
+          <img src="/content/people/plasma-sprint.jpg" alt="{{ i18n "plasma-sprint" }}" class="img-fluid">
+        <figcaption class="card-body">
+            <a href="https://dot.kde.org/2018/05/14/plasma-sprint-berlin">{{ i18n "plasma-sprint" }}</a> - {{ i18n "berlin" }}
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-3">
+        <picture class="w-100">
+          <source srcset="/content/people/goal.jpg 1x, /content/people/goal.jpg 2x">
+          <img src="/content/people/goal.jpg" alt="KDE goals" class="img-fluid w-100">
+        </picture>
+        <figcaption class="card-body">
+            <a href="https://dot.kde.org/2019/09/07/kde-decides-three-new-challenges-wayland-consistency-and-apps">{{ i18n "kde-goals" }}</a>
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-4">
+        <picture class="img-fluid">
+          <source srcset="/content/people/kdenlive-sprintx2.jpg 1x, /content/people/kdenlive-sprintx2.jpg 2x">
+          <img src="/content/people/kdenlive-sprintx2.jpg" alt="KDenlive Sprint group photo" class="img-fluid">
+        </picture>
+        <figcaption class="card-body">
+            <a href="https://dot.kde.org/2018/05/12/kdenlive-sprint-movie">{{ i18n "kdenlive-sprint" }}</a> - {{ i18n "paris" }}
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-5">
+        <picture class="img-fluid">
+           <source srcset="/content/people/conf-kde-in-2019x2.jpg 1x, /content/people/conf-kde-in-2019x2.jpg 2x">
+           <img src="/content/people/conf-kde-in-2019x2.jpg" alt="Conf.KDE.in group photo" class="img-fluid">
+        </picture>
+        <figcaption class="card-body">
+            <a href="https://conf.kde.in">conf.kde.in</a> - {{ i18n "delhi" }}
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-7">
+        <picture class="img-fluid">
+          <source srcset="/content/people/GSoC.jpg 1x, /content/people/GSoCx2.jpg 2x">
+          <img src="/content/people/GSoC.jpg" alt="{{ i18n "gsoc-students-photo" }}" class="img-fluid">
+        </picture>
+        <figcaption class="card-body">
+            <a href="https://community.kde.org/GSoC">{{ i18n "gsoc-students" }}</a>
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-8">
+        <picture class="img-fluid">
+          <source srcset="/content/people/lakademy-2018.jpg 1x, /content/people/lakademy-2018x2.jpg 2x">
+          <img src="/content/people/lakademy-2018.jpg" alt="LaKademy 2018 group photo" class="img-fluid w-100">
+        </picture>
+        <figcaption class="card-body">
+          <a href="https://dot.kde.org/2018/10/25/lakademy-2018-celebrates-22-years-kde">Lakademy</a> - {{ i18n "florianopolis" }}
+        </figcaption>
+      </figure>
+      <figure class="text-center card community-6">
+        <picture class="img-fluid">
+          <source srcset="/content/people/kde-connect.jpg 1x, /content/people/kde-connectx2.jpg 2x">
+          <img src="/content/people/kde-connect.jpg" alt="{{ i18n "kde-connect-sprint" }}" class="img-fluid">
+        </picture>
+        <figcaption class="card-body">
+          <a href="https://dot.kde.org/2018/05/28/2018-kde-connect-development-sprint">{{ i18n "kde-connect-sprint" }}</a> - {{ i18n "barcelona" }}
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+{{ end }}

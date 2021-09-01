@@ -1,0 +1,17 @@
+{{ $scratch := newScratch }}
+{{ $scratch.Set "url" "https://kdesrc-build.kde.org/" }}
+{{ $scratch.Set "version" .File.TranslationBaseName }}
+{{ $scratch.Set "version2" (delimit (first 2 (split .File.TranslationBaseName ".")) ".") }}
+{{ $scratch.Set "qtversion" .Params.qtversion }}
+{{ $scratch.Set "inqlude" "https://inqlude.org" }}
+{{ $scratch.Set "apiurl" "https://api.kde.org/frameworks" }}
+{{ $scratch.Set "frameworkurl" "https://invent.kde.org/frameworks" }}
+{{ $scratch.Set "frameworkmail" "https://mail.kde.org/mailman/listinfo/kde-frameworks-devel" }}
+{{ $scratch.Set "wiki" "https://community.kde.org/Get_KDE_Software_on_Your_Linux_Distro" }}
+
+{{ partialCached "announcements/frameworks_binary.html" $scratch }}
+<p>{{ i18n "sources-text" $scratch | markdownify }}</p>
+<p>{{ i18n "sources-instructions" $scratch | markdownify }}</p>
+{{ partialCached "announcements/frameworks_get_involved.html" $scratch }}
+
+{{ partialCached "announcements/support_kde.html" . }}

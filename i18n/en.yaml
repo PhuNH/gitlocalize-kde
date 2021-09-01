@@ -1,0 +1,93 @@
+annc-frameworks-title-pre-5-76:
+  other: 'Release of KDE Frameworks %ver'
+annc-frameworks-title:
+  other: 'KDE Ships Frameworks %ver'
+annc-frameworks-desc-pre-5-76:
+  other: 'KDE Ships Frameworks %ver.'
+annc-frameworks-desc:
+  other: 'KDE today announces the release of KDE Frameworks %ver.'
+annc-frameworks-text:
+  other: 'KDE today announces the release of KDE Frameworks {{ .Get "version" }}.'
+annc-frameworks-intro:
+  other: 'KDE Frameworks are {{ .Get "libCount" }} addon libraries to Qt which provide a wide variety of commonly needed functionality in mature, peer reviewed and well tested libraries with friendly licensing terms. For an introduction see [the KDE Frameworks release announcement]({{ .Get "firstAnncLink" }}).'
+annc-frameworks-intro-2:
+  other: 'This release is part of a series of planned monthly releases making improvements available to developers in a quick and predictable manner.'
+annc-frameworks-new:
+  other: 'New in this version'
+
+annc-plasma-alt:
+  other: 'Image of Plasma {{ .Get "maj_min" }}'
+annc-plasma-caption:
+  other: 'KDE Plasma {{ .Get "maj_min" }}'
+annc-plasma-beta-alt:
+  other: 'Image of Plasma {{ .Get "maj_min" }} Beta'
+annc-plasma-beta-caption:
+  other: 'KDE Plasma {{ .Get "maj_min" }} Beta'
+annc-plasma-bugfix-intro:
+  other: 'Today KDE releases a bugfix update to KDE Plasma {{ .Get "maj" }}, versioned {{ .Get "version" }}.'
+annc-plasma-bugfix-minor-release-1:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in January {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-2:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in February {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-3:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in March {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-4:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in April {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-5:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in May {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-6:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in June {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-7:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in July {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-8:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in August {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-9:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in September {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-10:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in October {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-11:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in November {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-minor-release-12:
+  other: '[Plasma {{ .Get "maj_min" }}](/announcements/plasma/{{ .Get "maj" }}/{{ .Get "maj_min" }}.0) was released in December {{ .Get "year"}}with many feature refinements and new modules to complete the desktop experience.'
+annc-plasma-bugfix-worth-1:
+  other: 'This release adds a week''s worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-2:
+  other: 'This release adds a week''s worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-3:
+  other: 'This release adds two weeks'' worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-4:
+  other: 'This release adds three weeks'' worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-5:
+  other: 'This release adds a month''s worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-6:
+  other: 'This release adds two months'' worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-7:
+  other: 'This release adds three months'' worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-8:
+  other: 'This release adds five months'' worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-worth-9:
+  other: 'This release adds six months'' worth of new translations and fixes from KDE''s contributors.'
+annc-plasma-bugfix-last:
+  other: 'The bugfixes are typically small but important and include:'
+
+compile-gear:
+  other: Compiling KDE Gear
+compile-gear-desc:
+  other: 'The complete source code for KDE Gear may be [freely downloaded](https://download.kde.org/stable/release-service/{{ .Get "version" }}/src). Instructions on compiling and installing are available from the [KDE Gear {{ .Get "version" }} Info Page](/info/releases-{{ .Get "version" }}).'
+
+plasma.5.22.today:
+  other: "Today"
+plasma.5.22.years:
+  other: "Years"
+plasma.5.22.months:
+  other: "Months"
+plasma.5.22.days:
+  other: "Days"
+plasma.5.22.noevents:
+  other: "No events for today"
+plasma.5.22.events:
+  other: "Events"
+plasma.5.22.date:
+  other: "Friday 6 september 2021"
+plasma-simple-powerful:
+  other: "Simple by default, Powerful when needed"

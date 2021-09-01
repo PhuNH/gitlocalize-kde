@@ -1,0 +1,27 @@
+{{ define "head-import" }}
+  <link href="https://cdn.kde.org/breeze-icons/icons.css" />
+{{ end }}
+{{ define "main" }}
+<main class="releaseAnnouncment">
+  <div class="text-center py-5 header-plasma" style="background-image: url('/announcements/plasma/5/5.22.0/volma.webp'); background-size: cover;">
+    <div class="container">
+      <h1 class="h2">{{ .Params.title }}</h1>
+      <h2 class="h1">{{ .Params.subtitle }}</h2>
+      <p class="h5 mx-auto text-center" style="max-width: 600px">{{ .Params.desc }}</p>
+      <p class="text-center">{{ partial "i18n_date.html" . }}</p>
+    </div>
+    <div class="laptop-with-overlay d-block mt-5 mb-3 mx-auto w-100" style="max-width: 1000px">
+      <img class="laptop img-fluid" src="/reusable-assets/laptop.svg" alt="empty laptop with an overlay" width=2000 height=1220>
+      <div class="laptop-overlay">
+        <picture>
+          <source srcset="/announcements/plasma/5/5.22.0/plasma-dark.webp" media="(prefers-color-scheme: dark)" type="image/webp">
+          <source srcset="/announcements/plasma/5/5.22.0/plasma.webp" media="(prefers-color-scheme: light)" type="image/webp">
+          <img class="img-fluid" src="/announcements/plasma/5/5.22.0/plasma.png" alt="Plasma" />
+        </picture>
+      </div>
+    </div>
+  </div>
+  {{ .Content }}
+  {{ partial "announcements/plasma_footer.html" . }}
+</main>
+{{ end }}
